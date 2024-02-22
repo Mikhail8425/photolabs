@@ -7,7 +7,7 @@ const TopicList = function(props) {
 
   const topics = props.topics.map((topic) => {
     return <TopicListItem {...topic} key={topic.id}/>;
-    });
+  });
 
   
   return (
