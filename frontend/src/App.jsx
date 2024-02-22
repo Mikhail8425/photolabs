@@ -8,6 +8,7 @@ const App = () => {
   return (
     <div className="App">
       <PhotoListItem/>
+      <h1>Photo List Item</h1>
     </div>
   );
 };
