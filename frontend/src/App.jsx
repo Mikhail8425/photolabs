@@ -8,15 +8,17 @@ import './styles/HomeRoute.scss'
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const displayModal  = {empty: true};
+  const displayModal = {empty: true};
   const [displayPhotoDetails, setDisplayPhotoDetails] = useState(displayModal);
   const setDisplayModal = function(photoDetails) {
     if (photoDetails) {
+      console.log('photoDetails', photoDetails);
       setDisplayPhotoDetails({empty: false, photoDetails});
     } else {
       setDisplayPhotoDetails(displayModal);
     }
   }
+
   return (
     <div className="App">
       <HomeRoute setDisplayModal = {setDisplayModal}/>
