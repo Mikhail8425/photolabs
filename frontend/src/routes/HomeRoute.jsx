@@ -1,29 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PhotoList from '../components/PhotoList';
-import TopNavigation from '../components/TopNavigationBar';
-
-import photos from '../mocks/photos';
-import topics from '../mocks/topics';
-
+import TopNavigationBar from '../components/TopNavigationBar';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
-  const initialPhotos = [...photos];
-
-  const [photosData, setPhotosData] = useState(initialPhotos);
-
-  const toggleLikedPhoto = function(id) {
-    let newPhotosData = photosData.map((photo) => {
-      photo.liked = photo.id === id ? !photo.liked : photo.liked;
-      return photo;
-    })
-    setPhotosData(newPhotosData);
-  }
-
+  console.log('HomeRoute props', props)
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} photos={photosData}/>
-      <PhotoList photos={photosData} toggleLikedPhoto={toggleLikedPhoto} setDisplayModal={props.setDisplayModal}/>
+      <TopNavigationBar topics={props.topics} favouritePhotos={props.favouritePhotos} setFavouritePhotos={props.setFavouritePhotos} fetchPhotosByTopic={props.fetchPhotosByTopic} />
+      <PhotoList photos={props.photos} favouritePhotos={props.favouritePhotos} setFavouritePhotos={props.setFavouritePhotos} setModalPhoto={props.setModalPhoto} similarPhotos={props.similarPhotos}  />
     </div>
   );
 };

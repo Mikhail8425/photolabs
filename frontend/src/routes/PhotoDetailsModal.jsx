@@ -1,35 +1,39 @@
 import React from 'react';
-
-import '../styles/PhotoDetailsModal.scss'
+import PhotoFavButton from '../components/PhotoFavButton';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from '../components/PhotoList';
+import '../styles/PhotoDetailsModal.scss'
 
 const PhotoDetailsModal = (props) => {
-  // console.log('PhotoDetailsModal props', props);
+  const {closeModalPhoto, modalPhoto} = props
   return (
     <div className="photo-details-modal">
-      <button className="photo-details-modal__close-button" onClick={props.setDisplayModal}>
+      <button className="photo-details-modal__close-button" onClick={closeModalPhoto} >
         <img src={closeSymbol} alt="close symbol" />
       </button>
 
-      <div className='photo-details-modal__images'>
-        <img src={props.photoDetails.urls.full} alt="image" className='photo-details-modal__image' />
+      <div>
+        <div className="photo-details-modal__image-container">
+          <PhotoFavButton className="photo-details__fav-icon" favouritePhotos={props.favouritePhotos} setFavouritePhotos={props.setFavouritePhotos} id={modalPhoto.id} />
+          <img src={modalPhoto.urls.regular} alt="profile image" className="photo-details-modal__image"/>
+        </div>
         <div className="photo-details-modal__photographer-details">
-          <img src={props.photoDetails.user.profile} alt="profile image" className="photo-details-modal__photographer-profile" />
-          <div>
-            <p className="photo-details-modal__photographer-info">{props.photoDetails.user.username}</p>
-            <p className="photo-details-modal__photographer-location">{props.photoDetails.location.city}, {props.photoDetails.location.country}</p>
+          <img src={modalPhoto.user.profile} alt="profile image" className="photo-details-modal__photographer-profile" />
+          <div className="locationandinfos">
+            <p className="photo-details-modal__photographer-info">{modalPhoto.user.name}</p>
+            <p className="photo-details-modal__photographer-location">{`${modalPhoto.location.city}, ${modalPhoto.location.country}`}</p>
           </div>
         </div>
-        <div className='photo-details-modal__header'>
-          <h1>Similar Photos</h1>
-        </div>
-        <div className='photo-details-modal__images'>
-          <PhotoList photos={Object.values(props.photoDetails.similar_photos)}  />
-        </div>
+      </div>
+
+      <hr className='photo-details-modal__hr'></hr>
+      <h1 className='photo-details-modal__title'>Related Photos </h1>
+
+      <div className= "photo-details-modal__images">
+        <PhotoList  favouritePhotos={props.favouritePhotos} setFavouritePhotos={props.setFavouritePhotos} setModalPhoto={props.setModalPhoto} photos={Object.values(modalPhoto.similar_photos)} modalPhoto={modalPhoto} />
       </div>
     </div>
-  )
+  );
 };
 
 export default PhotoDetailsModal;
