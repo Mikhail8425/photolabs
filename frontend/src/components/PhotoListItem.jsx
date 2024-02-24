@@ -1,23 +1,25 @@
 import React from "react";
 
+import PhotoFavButton from './PhotoFavButton';
+
+import "../styles/PhotoFavButton.scss";
 import "../styles/PhotoListItem.scss";
-import PhotoFavButton from "./PhotoFavButton";
+import "../styles/TopicList.scss";
 
 const PhotoListItem = (props) => {
-  // console.log('PhotoListItem props', props)
   return (
-    <article key={props.photoItem.id} className="photo-list__item">
-      <PhotoFavButton selected={props.selected} toggleLikedPhoto={props.toggleLikedPhoto}/>
-      <img src={props.photoItem.urls.regular} alt="image" className="photo-list__image" onClick={() => props.setDisplayModal(props.photoItem)}/>
+    <article className="photo-list__item">
+      <PhotoFavButton favouritePhotos={props.favouritePhotos} setFavouritePhotos={props.setFavouritePhotos} id={props.photo.id} className="photo-list__fav-icon" />
+      <img onClick={() =>props.setModalPhoto(props.photo)} className="photo-list__image" alt="image" src={props.photo.urls.regular} />
       <div className="photo-list__user-details">
-        <img src={props.photoItem.profile} alt="profile image" className="photo-list__user-profile" />
-        <div className="photo-list__user-info">
-          <p>{props.photoItem.user.username}</p>
-          <p className="photo-list__user-location ">{props.photoItem.location.city}, {props.photoItem.location.country}</p>
+        <img className="photo-list__user-profile" alt="profile image" src={props.photo.user.profile} />
+        <div className="locationandinfo">
+          <p className="photo-list__user-info">{props.photo.user.name}</p>
+          <p className="photo-list__user-location">{`${props.photo.location.city}, ${props.photo.location.country}`}</p>
         </div>
       </div>
-  </article>
-  );
+    </article>
+  )
 };
 
 export default PhotoListItem;
