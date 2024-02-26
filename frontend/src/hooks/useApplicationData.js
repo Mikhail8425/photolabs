@@ -16,7 +16,7 @@ const ACTIONS = {
 };
 
 const reducer = (state, action) => {
-  console.log("reducer", action);
+  // console.log("reducer", action);
   switch (action.type) {
     case ACTIONS.SET_FAVOURITE_PHOTOS:
       return { ...state, favouritePhotos: action.payload };

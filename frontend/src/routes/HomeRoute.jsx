@@ -4,7 +4,7 @@ import TopNavigationBar from '../components/TopNavigationBar';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
-  console.log('HomeRoute props', props)
+  // console.log('HomeRoute props', props)
   const state = props.state;
   const { photos, topics, favouritePhotos, similarPhotos } = state;
   return (

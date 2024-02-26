@@ -5,6 +5,7 @@ import PhotoList from '../components/PhotoList';
 import '../styles/PhotoDetailsModal.scss'
 
 const PhotoDetailsModal = (props) => {
+  console.log('PhotoDetailsModal props', props)
   const {closeModalPhoto, modalPhoto} = props
   return (
     <div className="photo-details-modal">

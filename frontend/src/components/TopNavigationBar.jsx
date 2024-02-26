@@ -5,7 +5,7 @@ import FavBadge from './FavBadge';
 import '../styles/TopNavigationBar.scss'
 
 const TopNavigation = (props) => {
-  console.log('TopNavigation props', props)
+  // console.log('TopNavigation props', props)
 
   const isFavPhotoExist = props.favouritePhotos.length > 0;
 

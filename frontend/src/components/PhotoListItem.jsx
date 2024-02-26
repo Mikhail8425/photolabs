@@ -7,6 +7,7 @@ import "../styles/PhotoListItem.scss";
 import "../styles/TopicList.scss";
 
 const PhotoListItem = (props) => {
+  // console.log('PhotoListItem props', props)
   return (
     <article className="photo-list__item">
       <PhotoFavButton favouritePhotos={props.favouritePhotos} setFavouritePhotos={props.setFavouritePhotos} id={props.photo.id} className="photo-list__fav-icon" />
