@@ -1,10 +1,10 @@
-import { useReducer, useEffect, useState } from "react";
+import { useReducer, useEffect, } from "react";
 
 const initialState = {
   favouritePhotos: [],
   modalPhoto: null,
-  photoData: [],
-  topicData: []
+  photos: [],
+  topics: []
 };
 
 const ACTIONS = {
@@ -16,15 +16,16 @@ const ACTIONS = {
 };
 
 const reducer = (state, action) => {
+  console.log("reducer", action);
   switch (action.type) {
     case ACTIONS.SET_FAVOURITE_PHOTOS:
       return { ...state, favouritePhotos: action.payload };
     case ACTIONS.SET_MODAL_PHOTO:
       return { ...state, modalPhoto: action.payload };
     case ACTIONS.SET_PHOTO_DATA:
-      return { ...state, photoData: action.payload };
-      case ACTIONS.SET_TOPIC_DATA:
-      return { ...state, topicData: action.payload };
+      return { ...state, photos: action.payload };
+    case ACTIONS.SET_TOPIC_DATA:
+      return { ...state, topics: action.payload };
     case ACTIONS.CLOSE_MODAL_PHOTO:
       return { ...state, modalPhoto: null };
     default:
@@ -91,10 +92,6 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.SET_MODAL_PHOTO, payload: photo });
   };
 
-  const setTopic = (topic) => {
-    dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topic });
-  };
-
   const closeModalPhoto = () => {
     dispatch({ type: ACTIONS.CLOSE_MODAL_PHOTO });
   };
@@ -104,8 +101,7 @@ const useApplicationData = () => {
     setFavouritePhotos,
     setModalPhoto,
     closeModalPhoto,
-    fetchPhotosByTopic,
-    setTopic
+    fetchPhotosByTopic//not used?
   };
 };
 

@@ -5,10 +5,12 @@ import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
   console.log('HomeRoute props', props)
+  const state = props.state;
+  const { photos, topics, favouritePhotos, similarPhotos } = state;
   return (
     <div className="home-route">
-      <TopNavigationBar topics={props.topics} favouritePhotos={props.favouritePhotos} setFavouritePhotos={props.setFavouritePhotos} fetchPhotosByTopic={props.fetchPhotosByTopic} />
-      <PhotoList photos={props.photos} favouritePhotos={props.favouritePhotos} setFavouritePhotos={props.setFavouritePhotos} setModalPhoto={props.setModalPhoto} similarPhotos={props.similarPhotos}  />
+      <TopNavigationBar topics={topics} favouritePhotos={favouritePhotos} setFavouritePhotos={props.setFavouritePhotos} fetchPhotosByTopic={props.fetchPhotosByTopic} />
+      <PhotoList photos={photos} favouritePhotos={favouritePhotos} setFavouritePhotos={props.setFavouritePhotos} setModalPhoto={props.setModalPhoto} similarPhotos={similarPhotos}  />
     </div>
   );
 };
