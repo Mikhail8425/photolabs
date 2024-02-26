@@ -9,16 +9,34 @@ import './styles/HomeRoute.scss'
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {  
-  const { state, updateToFavPhotoIds, setPhotoSelected, onClosePhotoDetailsModal, 
+  const { 
+    state, 
+    updateToFavPhotoIds, 
+    setPhotoSelected, 
+    onClosePhotoDetailsModal, 
     setFavouritePhotos,
     setModalPhoto,
     closeModalPhoto,
-    fetchPhotosByTopic} = useApplicationData();
+    fetchPhotosByTopic,
+  } = useApplicationData();
   console.log('state', state);
   return (
     <div className="App">
-      <HomeRoute state={state} setPhotoSelected={setPhotoSelected} updateToFavPhotoIds={updateToFavPhotoIds} setModalPhoto={state.setModalPhoto} />
-      {state.photoSelected && <PhotoDetailsModal state={state} onClosePhotoDetailsModal={onClosePhotoDetailsModal} updateToFavPhotoIds={updateToFavPhotoIds} setModalPhoto={state.setModalPhoto}/>}
+      <HomeRoute 
+      state={state} 
+      setPhotoSelected={setPhotoSelected} 
+      updateToFavPhotoIds={updateToFavPhotoIds} 
+      setModalPhoto={setModalPhoto}
+      setFavouritePhotos={setFavouritePhotos}
+      fetchPhotosByTopic={fetchPhotosByTopic}
+      />
+      {state.photoSelected && <PhotoDetailsModal 
+      state={state} 
+      closeModalPhoto={closeModalPhoto}
+      updateToFavPhotoIds={updateToFavPhotoIds} 
+      setModalPhoto={setModalPhoto}
+      setFavouritePhotos={setFavouritePhotos}
+      />}
     </div>
   );
 };

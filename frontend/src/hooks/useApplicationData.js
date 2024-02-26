@@ -4,7 +4,8 @@ const initialState = {
   favouritePhotos: [],
   modalPhoto: null,
   photos: [],
-  topics: []
+  topics: [],
+  photoSelected: false
 };
 
 const ACTIONS = {
@@ -18,6 +19,8 @@ const ACTIONS = {
 const reducer = (state, action) => {
   // console.log("reducer", action);
   switch (action.type) {
+    case ACTIONS.SET_DISPLAY_MODAL: 
+      return { ...state, photoSelected: action.payload };
     case ACTIONS.SET_FAVOURITE_PHOTOS:
       return { ...state, favouritePhotos: action.payload };
     case ACTIONS.SET_MODAL_PHOTO:
@@ -27,7 +30,7 @@ const reducer = (state, action) => {
     case ACTIONS.SET_TOPIC_DATA:
       return { ...state, topics: action.payload };
     case ACTIONS.CLOSE_MODAL_PHOTO:
-      return { ...state, modalPhoto: null };
+      return { ...state, modalPhoto: null, photoSelected: false};
     default:
       return state;
   }
@@ -88,20 +91,37 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.SET_FAVOURITE_PHOTOS, payload: photos });
   };
 
-  const setModalPhoto = (photo) => {
-    dispatch({ type: ACTIONS.SET_MODAL_PHOTO, payload: photo });
-  };
-
   const closeModalPhoto = () => {
     dispatch({ type: ACTIONS.CLOSE_MODAL_PHOTO });
   };
+
+  const updateToFavPhotoIds = (photoId) => {
+    if (state.favPhotos.includes(photoId)) {
+      const newFavPhotos = state.favouritePhotos.filter(
+        (photo) => photo.id !== photoId
+      );
+      dispatch({ type: ACTIONS.SET_FAVOURITE_PHOTOS, payload: newFavPhotos});
+    } else {
+      const newFavPhotos = state.photos.filter((photo) => photo.id === photoId);
+      setFavouritePhotos([...state.favouritePhotos, ...newFavPhotos]);
+      dispatch({ type: ACTIONS.SET_FAVOURITE_PHOTOS, payload: [...state.favouritePhotos, ...newFavPhotos] });
+    }
+  };
+
+  const setModalPhoto = (photo) => {
+    dispatch({ type: ACTIONS.SET_MODAL_PHOTO, payload: photo })
+    dispatch({ type: ACTIONS.SET_DISPLAY_MODAL, payload: true })
+  };
+
+  
 
   return {
     state,
     setFavouritePhotos,
     setModalPhoto,
     closeModalPhoto,
-    fetchPhotosByTopic//not used?
+    fetchPhotosByTopic,
+    updateToFavPhotoIds
   };
 };
 

@@ -6,7 +6,9 @@ import '../styles/PhotoDetailsModal.scss'
 
 const PhotoDetailsModal = (props) => {
   console.log('PhotoDetailsModal props', props)
-  const {closeModalPhoto, modalPhoto} = props
+  const {closeModalPhoto} = props;
+  const modalPhoto = props.state.modalPhoto;
+
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={closeModalPhoto} >
