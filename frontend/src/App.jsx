@@ -13,29 +13,28 @@ const App = () => {
     state, 
     updateToFavPhotoIds, 
     setPhotoSelected, 
-    onClosePhotoDetailsModal, 
     setFavouritePhotos,
     setModalPhoto,
     closeModalPhoto,
     fetchPhotosByTopic,
   } = useApplicationData();
-  console.log('state', state);
+
   return (
     <div className="App">
       <HomeRoute 
-      state={state} 
-      setPhotoSelected={setPhotoSelected} 
-      updateToFavPhotoIds={updateToFavPhotoIds} 
-      setModalPhoto={setModalPhoto}
-      setFavouritePhotos={setFavouritePhotos}
-      fetchPhotosByTopic={fetchPhotosByTopic}
+        state={state} 
+        setPhotoSelected={setPhotoSelected} 
+        updateToFavPhotoIds={updateToFavPhotoIds} 
+        setModalPhoto={setModalPhoto}
+        setFavouritePhotos={setFavouritePhotos}
+        fetchPhotosByTopic={fetchPhotosByTopic}
       />
       {state.photoSelected && <PhotoDetailsModal 
-      state={state} 
-      closeModalPhoto={closeModalPhoto}
-      updateToFavPhotoIds={updateToFavPhotoIds} 
-      setModalPhoto={setModalPhoto}
-      setFavouritePhotos={setFavouritePhotos}
+        state={state} 
+        closeModalPhoto={closeModalPhoto}
+        updateToFavPhotoIds={updateToFavPhotoIds} 
+        setModalPhoto={setModalPhoto}
+        setFavouritePhotos={setFavouritePhotos}
       />}
     </div>
   );

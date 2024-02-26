@@ -15,7 +15,13 @@ const HomeRoute = (props) => {
         setFavouritePhotos={props.setFavouritePhotos} 
         fetchPhotosByTopic={props.fetchPhotosByTopic}
       />
-      <PhotoList photos={photos} favouritePhotos={favouritePhotos} setFavouritePhotos={props.setFavouritePhotos} setModalPhoto={props.setModalPhoto} similarPhotos={similarPhotos}  />
+      <PhotoList 
+        photos={photos} 
+        favouritePhotos={favouritePhotos} 
+        setFavouritePhotos={props.setFavouritePhotos} 
+        setModalPhoto={props.setModalPhoto} 
+        similarPhotos={similarPhotos}
+      />
     </div>
   );
 };
