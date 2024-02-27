@@ -15,6 +15,7 @@ const HomeRoute = (props) => {
         setFavouritePhotos={props.setFavouritePhotos} 
         fetchPhotosByTopic={props.fetchPhotosByTopic}
         light={light}
+        switchLight={props.switchLight}
       />
       <PhotoList 
         photos={photos} 

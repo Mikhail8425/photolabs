@@ -6,7 +6,7 @@ import LightSwitchButton from './LightSwitchButton';
 import '../styles/TopNavigationBar.scss'
 
 const TopNavigation = (props) => {
-  console.log('TopNavigation props', props)
+  // console.log('TopNavigation props', props)
   const isFavPhotoExist = props.favouritePhotos.length > 0;
   const { light, switchLight } = props;
 

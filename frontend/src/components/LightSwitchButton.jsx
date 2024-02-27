@@ -1,9 +1,11 @@
 import React, { useCallback, useState } from 'react';
 
 function LightSwitchButton(props) {
+  // console.log('LightSwitchButton props', props);
   const { light, switchLight } = props;
 
   const handleClick = () => {
+    console.log('props.light', props.light)
     switchLight();
   };
 
