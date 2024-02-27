@@ -6,7 +6,7 @@ import '../styles/HomeRoute.scss';
 const HomeRoute = (props) => {
   // console.log('HomeRoute props', props)
   const state = props.state;
-  const { photos, topics, favouritePhotos, similarPhotos} = state;
+  const { photos, topics, favouritePhotos, similarPhotos, light} = state;
   return (
     <div className="home-route">
       <TopNavigationBar 
@@ -14,6 +14,7 @@ const HomeRoute = (props) => {
         favouritePhotos={favouritePhotos} 
         setFavouritePhotos={props.setFavouritePhotos} 
         fetchPhotosByTopic={props.fetchPhotosByTopic}
+        light={light}
       />
       <PhotoList 
         photos={photos} 

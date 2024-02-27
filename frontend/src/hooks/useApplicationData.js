@@ -5,7 +5,8 @@ const initialState = {
   modalPhoto: null,
   photos: [],
   topics: [],
-  photoSelected: false
+  photoSelected: false,
+  light: "on"
 };
 
 const ACTIONS = {
@@ -13,12 +14,16 @@ const ACTIONS = {
   SET_MODAL_PHOTO: "SET_MODAL_PHOTO",
   SET_PHOTO_DATA: "SET_PHOTO_DATA",
   SET_TOPIC_DATA: "SET_TOPIC_DATA",
-  CLOSE_MODAL_PHOTO: "CLOSE_MODAL_PHOTO"
+  CLOSE_MODAL_PHOTO: "CLOSE_MODAL_PHOTO",
+  SET_DISPLAY_MODAL: "SET_DISPLAY_MODAL",
+  SET_LIGHT: "SET_LIGHT"
 };
 
 const reducer = (state, action) => {
   // console.log("reducer", action);
   switch (action.type) {
+    case ACTIONS.SET_LIGHT: 
+      return { ...state, light: action.payload };
     case ACTIONS.SET_DISPLAY_MODAL: 
       return { ...state, photoSelected: action.payload };
     case ACTIONS.SET_FAVOURITE_PHOTOS:
@@ -113,7 +118,10 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.SET_DISPLAY_MODAL, payload: true })
   };
 
-  
+  const switchLight = () => {
+    const light = [...state.light];
+    light === "on" ? dispatch({ type: ACTIONS.SET_LIGHT, payload: "off" }) : dispatch({ type: ACTIONS.SET_LIGHT, payload: "on" });
+  };
 
   return {
     state,
@@ -121,7 +129,8 @@ const useApplicationData = () => {
     setModalPhoto,
     closeModalPhoto,
     fetchPhotosByTopic,
-    updateToFavPhotoIds
+    updateToFavPhotoIds,
+    switchLight
   };
 };
 

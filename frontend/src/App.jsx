@@ -17,6 +17,7 @@ const App = () => {
     setModalPhoto,
     closeModalPhoto,
     fetchPhotosByTopic,
+    switchLight
   } = useApplicationData();
 
   return (
@@ -28,6 +29,7 @@ const App = () => {
         setModalPhoto={setModalPhoto}
         setFavouritePhotos={setFavouritePhotos}
         fetchPhotosByTopic={fetchPhotosByTopic}
+        switchLight={switchLight}
       />
       {state.photoSelected && <PhotoDetailsModal 
         state={state} 
