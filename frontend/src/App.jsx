@@ -19,9 +19,10 @@ const App = () => {
     fetchPhotosByTopic,
     switchLight
   } = useApplicationData();
-
+  console.log('state', state);
+  const dark = (state.light === 'off') ? 'dark' : '';
   return (
-    <div className="App">
+    <div className={`App ${dark}`}>
       <HomeRoute 
         state={state} 
         setPhotoSelected={setPhotoSelected} 

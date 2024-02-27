@@ -119,8 +119,6 @@ const useApplicationData = () => {
   };
 
   const switchLight = () => {
-    console.log('switchLight starts');
-    console.log('light', state.light);
     state.light === "on" ? dispatch({ type: ACTIONS.SET_LIGHT, payload: "off" }) : dispatch({ type: ACTIONS.SET_LIGHT, payload: "on" });
   };
 
