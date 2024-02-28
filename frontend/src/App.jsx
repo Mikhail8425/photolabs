@@ -7,7 +7,6 @@ import useApplicationData from 'hooks/useApplicationData';
 import './App.scss';
 import './styles/HomeRoute.scss'
 
-// Note: Rendering a single component to build components in isolation
 const App = () => {  
   const { 
     state, 

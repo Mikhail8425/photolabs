@@ -5,13 +5,11 @@ import PhotoList from '../components/PhotoList';
 import '../styles/PhotoDetailsModal.scss'
 
 const PhotoDetailsModal = (props) => {
-  // console.log('PhotoDetailsModal props', props)
-  const {closeModalPhoto} = props;
-  // const modalPhoto = props.state.modalPhoto;
 
+  const {closeModalPhoto} = props;
   const state = props.state;
   const { photos, topics, favouritePhotos, similarPhotos, modalPhoto} = state;
-  // console.log('Obj 1234', Object.values(state.modalPhoto.similar_photos))
+
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={closeModalPhoto} >

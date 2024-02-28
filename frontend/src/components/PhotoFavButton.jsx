@@ -4,8 +4,7 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
-  // console.log('PhotoFavButton props', props)
-
+  
   const [likes, setLikes] = useState(false);
   let favourites = props.favouritePhotos;
   const toggleFavorite = () => {

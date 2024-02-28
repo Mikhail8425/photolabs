@@ -18,7 +18,6 @@ const ACTIONS = {
 };
 
 const reducer = (state, action) => {
-  // console.log("reducer", action);
   switch (action.type) {
     case ACTIONS.SET_DISPLAY_MODAL: 
       return { ...state, photoSelected: action.payload };
@@ -113,11 +112,6 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.SET_MODAL_PHOTO, payload: photo })
     dispatch({ type: ACTIONS.SET_DISPLAY_MODAL, payload: true })
   };
-
-  const setPhotoSelected = (photoDetails) => {
-    // setState({ ...state, displayModal: photoDetails });
-    dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photoDetails});
-}
 
   return {
     state,
