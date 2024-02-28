@@ -8,6 +8,7 @@ function PhotoFavButton(props) {
   const [likes, setLikes] = useState(false);
 
   const toggleFavorite = () => {
+    console.log('toggleFavorite')
     let favourites = props.favouritePhotos;
     let like = false  
 
