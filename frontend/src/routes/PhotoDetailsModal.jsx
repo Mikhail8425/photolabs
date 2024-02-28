@@ -5,13 +5,13 @@ import PhotoList from '../components/PhotoList';
 import '../styles/PhotoDetailsModal.scss'
 
 const PhotoDetailsModal = (props) => {
-  console.log('PhotoDetailsModal props', props)
+  // console.log('PhotoDetailsModal props', props)
   const {closeModalPhoto} = props;
-  const modalPhoto = props.state.modalPhoto;
+  // const modalPhoto = props.state.modalPhoto;
 
   const state = props.state;
-  const { photos, topics, favouritePhotos, similarPhotos} = state;
-  console.log('Obj 1234', Object.values(state.modalPhoto.similar_photos))
+  const { photos, topics, favouritePhotos, similarPhotos, modalPhoto} = state;
+  // console.log('Obj 1234', Object.values(state.modalPhoto.similar_photos))
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={closeModalPhoto} >
@@ -22,7 +22,7 @@ const PhotoDetailsModal = (props) => {
         <div className="photo-details-modal__image-container">
           <PhotoFavButton 
             className="photo-details__fav-icon" 
-            favouritePhotos={state.favouritePhotos} 
+            favouritePhotos={favouritePhotos} 
             setFavouritePhotos={props.setFavouritePhotos} 
             id={modalPhoto.id}
           />
@@ -42,11 +42,12 @@ const PhotoDetailsModal = (props) => {
 
       <div className= "photo-details-modal__images">
         <PhotoList 
-          favouritePhotos={state.favouritePhotos} 
+          favouritePhotos={favouritePhotos} 
           setFavouritePhotos={props.setFavouritePhotos} 
-          setModalPhoto={props.setModalPhoto} 
-          photos={Object.values(modalPhoto.similar_photos)} 
+          setModalPhoto={()=>{}} 
+          photos={Object.values(state.modalPhoto.similar_photos)} 
           modalPhoto={modalPhoto}
+          similarPhotos={similarPhotos}
         />
       </div>
     </div>
