@@ -9,6 +9,9 @@ const PhotoDetailsModal = (props) => {
   const {closeModalPhoto} = props;
   const modalPhoto = props.state.modalPhoto;
 
+  const state = props.state;
+  const { photos, topics, favouritePhotos, similarPhotos} = state;
+
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={closeModalPhoto} >
@@ -19,7 +22,7 @@ const PhotoDetailsModal = (props) => {
         <div className="photo-details-modal__image-container">
           <PhotoFavButton 
             className="photo-details__fav-icon" 
-            favouritePhotos={props.favouritePhotos} 
+            favouritePhotos={state.favouritePhotos} 
             setFavouritePhotos={props.setFavouritePhotos} 
             id={modalPhoto.id}
           />
@@ -39,10 +42,10 @@ const PhotoDetailsModal = (props) => {
 
       <div className= "photo-details-modal__images">
         <PhotoList 
-          favouritePhotos={props.favouritePhotos} 
+          favouritePhotos={state.favouritePhotos} 
           setFavouritePhotos={props.setFavouritePhotos} 
           setModalPhoto={props.setModalPhoto} 
-          photos={Object.values(modalPhoto.similar_photos)} 
+          photos={Object.values(state.modalPhoto.similar_photos)} 
           modalPhoto={modalPhoto}
         />
       </div>
