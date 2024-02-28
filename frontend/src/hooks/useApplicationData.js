@@ -13,7 +13,8 @@ const ACTIONS = {
   SET_MODAL_PHOTO: "SET_MODAL_PHOTO",
   SET_PHOTO_DATA: "SET_PHOTO_DATA",
   SET_TOPIC_DATA: "SET_TOPIC_DATA",
-  CLOSE_MODAL_PHOTO: "CLOSE_MODAL_PHOTO"
+  CLOSE_MODAL_PHOTO: "CLOSE_MODAL_PHOTO",
+  SET_DISPLAY_MODAL: "SET_DISPLAY_MODAL"
 };
 
 const reducer = (state, action) => {
@@ -113,7 +114,10 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.SET_DISPLAY_MODAL, payload: true })
   };
 
-  
+  const setPhotoSelected = (photoDetails) => {
+    // setState({ ...state, displayModal: photoDetails });
+    dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photoDetails});
+}
 
   return {
     state,

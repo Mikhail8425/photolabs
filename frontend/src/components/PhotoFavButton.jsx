@@ -10,6 +10,7 @@ function PhotoFavButton(props) {
   const toggleFavorite = () => {
     console.log('toggleFavorite')
     let favourites = props.favouritePhotos;
+    console.log('favourites', favourites)
     let like = false  
 
     if (favourites.includes(props.id)) { 
